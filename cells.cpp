@@ -32,7 +32,7 @@ int Cells::count_cells(int row, int col, int connection_type, int cells) {
     (this->board)[row][col] = 0;
     cells++;
 
-    // Recrusively check surrounding cell and update value of "cells"
+    // Recrusively check surrounding cells and update value of "cells"
     // Check cell above
     if (row > 0) {
         cells = this->count_cells(row - 1, col, connection_type, cells);
@@ -52,7 +52,7 @@ int Cells::count_cells(int row, int col, int connection_type, int cells) {
     if (col < this->last_col) {
         cells = this->count_cells(row, col + 1, connection_type, cells);
     }
-    // For connectivity type "8"
+    // For connectivity type "8," check diagonal cells
     if (connection_type == 8) {
         // Check upper left cell
         if(row > 0 && col > 0) {
