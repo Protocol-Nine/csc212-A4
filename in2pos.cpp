@@ -46,8 +46,6 @@ int main(int argc, char * argv[]) {
         } else {
             output_string.append(input_token + " ");
         }
-
-        std::cout << output_string << std::endl;
     }
 
     // Pop any remaining operators from the stack onto the output string
