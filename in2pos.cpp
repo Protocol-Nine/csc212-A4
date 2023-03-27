@@ -12,21 +12,23 @@ int main(int argc, char * argv[]) {
         if (input_token == "(") {
             stack.push_back(input_token);
         } else if (input_token == "*" || input_token == "/") {
-            // Pop all + or - operators from stack to output
+            // Pop all *, / or ^ operators from stack to output
             if (stack.size() != 0) {
                 while (stack.size() != 0 && stack[stack.size() - 1] != "(" && 
-                        (stack[stack.size() - 1] == "*" || stack[stack.size() - 1] == "/")) {
+                        (stack[stack.size() - 1] == "*" || stack[stack.size() - 1] == "/"
+                        || stack[stack.size() - 1] == "^")) {
                     output_string.append(stack[stack.size() - 1] + " ");
                     stack.pop_back();
                 }
             }
             stack.push_back(input_token);
         } else if (input_token == "+" || input_token == "-") {
-            // Pop all +, -, *, or / operators from stack to output
+            // Pop all +, -, *, /, or ^ operators from stack to output
             if (stack.size() != 0) {    
                 while (stack.size() != 0 && stack[stack.size() - 1] != "(" &&
                         (stack[stack.size() - 1] == "+" || stack[stack.size() - 1] == "-" ||
-                        stack[stack.size() - 1] == "*" || stack[stack.size() - 1] == "/")) {
+                        stack[stack.size() - 1] == "*" || stack[stack.size() - 1] == "/"
+                        || stack[stack.size() - 1] == "^")) {
                     output_string.append(stack[stack.size() - 1] + " ");
                     stack.pop_back();
                 }
