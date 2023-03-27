@@ -38,7 +38,11 @@ int main(int argc, char * argv[]) {
             stack.push_back(result);
         } else if (input_token == "/") {
             // Interger divide two values from stack
-            result = stack[stack.size() - 1] / stack[stack.size() - 2];
+            result = stack[stack.size() - 2] / stack[stack.size() - 1];
+            // Adjustment for floor divison for negatives
+            if (result == 0 && stack[stack.size() - 2] * stack[stack.size() - 1] < 0) {
+                result--;
+            }
             // Pop the used values, push new result
             stack.pop_back();
             stack.pop_back();
@@ -57,13 +61,13 @@ int main(int argc, char * argv[]) {
             stack.push_back(std::stoi(input_token));
         }
 
-        std::cout << std::endl << result << " " << input_token << std::endl;
+        // std::cout << std::endl << result << " " << input_token << std::endl;
 
-        for (int i = 0; i < stack.size(); i++) {
-            std::cout << stack[i] << " ";
-        }
+        // for (int i = 0; i < stack.size(); i++) {
+        //     std::cout << stack[i] << " ";
+        // }
 
-        std::cout << std::endl;
+        // std::cout << std::endl;
     }
 
     std::cout << stack[0] << std::endl;
