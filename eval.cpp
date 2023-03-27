@@ -7,7 +7,7 @@ int main(int argc, char * argv[]) {
     std::stringstream input_stream(argv[1]);
     std::vector<int> stack;
     std::string input_token;
-    int result;
+    int result = 0;
 
     while (input_stream >> input_token) {
         // if operator
@@ -38,7 +38,7 @@ int main(int argc, char * argv[]) {
             stack.push_back(result);
         } else if (input_token == "/") {
             // Interger divide two values from stack
-            result = stack[stack.size() - 2] / stack[stack.size() - 1];
+            result = stack[stack.size() - 1] / stack[stack.size() - 2];
             // Pop the used values, push new result
             stack.pop_back();
             stack.pop_back();
@@ -56,6 +56,14 @@ int main(int argc, char * argv[]) {
             // Otherwise, push numbers onto the stack
             stack.push_back(std::stoi(input_token));
         }
+
+        std::cout << std::endl << result << " " << input_token << std::endl;
+
+        for (int i = 0; i < stack.size(); i++) {
+            std::cout << stack[i] << " ";
+        }
+
+        std::cout << std::endl;
     }
 
     std::cout << stack[0] << std::endl;
